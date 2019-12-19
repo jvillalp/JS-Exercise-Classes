@@ -80,9 +80,11 @@ class Car {
     this.milesPerGallon = milesPerGallon;
     this.tank =0;
     this.odometer =0;
+    this.fulltank=0
   }
   fill(gallons){
     this.tank = this.tank + gallons;
+    this.fulltank = gallons * this.milesPerGallon;
   }
   drive(distance){
     this.odometer = this.odometer + distance;
@@ -90,7 +92,7 @@ class Car {
   
   if(this.tank < 0){
     this.tank =0;
-    this.odometer= 200;
+    this.odometer = this.fulltank;
     return `I ran out of fuel at ${this.odometer} miles!`;
   }
 }
@@ -109,9 +111,21 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  constructor(attributes){
+    this.name = attributes.name,
+    this.age = attributes.age,
+    this.location = attributes.location
+  }
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}.`;
+  }
 }
-
+// const person1 = new Lambdasian({
+//   name: 'john',
+//   location: 'USA',
+//   age: 23
+// });
+// console.log(person1.speak());
 /*
   TASK 4
     - Write an Instructor class extending Lambdasian.
